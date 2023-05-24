@@ -1,0 +1,17 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LandingPage from "../pages/LandingPage";
+import React from 'react';
+import MovieDetails from "../pages/MovieDetails";
+
+function MyRoutes() {
+    return(
+        <Router>
+            <Routes>
+                <Route exact path="/" element={<LandingPage/>}/>
+                <Route exact path="/movie/:movieId" element={<MovieDetails/>}/>
+            </Routes>
+        </Router>
+    )
+}
+
+export default MyRoutes;
