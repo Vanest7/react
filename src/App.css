@@ -1,5 +1,5 @@
 body{
-  background-color: #1F1F1F;
+  background-color: #310161;
   color: aliceblue;
   margin: 0;
   padding: 0;
@@ -9,7 +9,7 @@ header{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(11, 43, 78);
+  background-color: rgb(35, 76, 120);
   height: 150px;
   margin-top: -20px;
   align-items: center;
