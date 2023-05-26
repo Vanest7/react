@@ -1,13 +1,13 @@
-import MainContent from "../components/MainContent";
+import ContentTv from "../components/ContentTv";
 import React from 'react';
 import NavBar from "../utils/NavBar";
 
-function LandingPage() {
+function SeriesPage() {
     return(
         <div>
             <NavBar/>
-            <MainContent />
+            <ContentTv />
         </div>
     )
 }
-export default LandingPage;
+export default SeriesPage;

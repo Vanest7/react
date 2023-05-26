@@ -1,13 +1,13 @@
-import MainContent from "../components/MainContent";
+import ContentCard from "../components/ContentCard";
 import React from 'react';
 import NavBar from "../utils/NavBar";
 
-function LandingPage() {
+function MoviesPage() {
     return(
         <div>
             <NavBar/>
-            <MainContent />
+            <ContentCard />
         </div>
     )
 }
-export default LandingPage;
+export default MoviesPage;

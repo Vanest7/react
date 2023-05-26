@@ -15,10 +15,10 @@ function NavBar() {
             <Link className="nav-link active" aria-current="page" to={"/"}>Home</Link>
             </li>
             <li className="nav-item">
-            <a className="nav-link" href="#">Movies</a>
+            <Link className="nav-link" to={"/movies"}>Movies</Link>
             </li>
             <li className="nav-item">
-            <a className="nav-link" href="#">Series</a>
+            <Link className="nav-link" to={"/tv"}>Series</Link>
             </li>
             <li className="nav-item">
             <a className="nav-link" href="#">Books</a>

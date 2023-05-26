@@ -1,20 +1,20 @@
 import { React, useState, useEffect } from "react";
 import { get } from "../data/HttpClient";
-import MovieCard from "./MovieCard";
+import SerieCard from "./SerieCard";
 import "./movieCard.css";
 import MyCarousel from "./Carousel";
 import { ShuffleArray } from '../utils/ShuffleArray'
 
 
-function ContentCard() {
-  const [movies, SetMovies] = useState([]);
+function ContentTv() {
+  const [series, SetSeries] = useState([]);
   useEffect(() => {
-    get("/discover/movie").then((data) => {
-      SetMovies(data.results);
+    get("/tv/popular").then((data) => {
+      SetSeries(data.results);
     });
   }, []);
-  const allImageURLs = movies.map(
-    (movie) => `https://image.tmdb.org/t/p/w300${movie.poster_path}`
+  const allImageURLs = series.map(
+    (serie) => `https://image.tmdb.org/t/p/w300${serie.poster_path}`
   );
   const carouselImages = ShuffleArray(allImageURLs).slice(0, 4);
 
@@ -22,13 +22,12 @@ function ContentCard() {
     <>
       <MyCarousel images={carouselImages}></MyCarousel>
       <ul className="container">
-        {movies.map((movie) => {
-          console.log(movie);
-          return <MovieCard key={movie.id} movie={movie} />;
+        {series.map((serie) => {
+          return <SerieCard key={serie.id} serie={serie} />;
         })}
       </ul>
     </>
   );
 }
 
-export default ContentCard;
+export default ContentTv;
