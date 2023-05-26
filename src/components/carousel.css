@@ -1,0 +1,14 @@
+.carousel-indicators {
+    display: none; /* Oculta las rallitas de navegación */
+  }
+  
+  .my-carousel {
+    width: 100%;
+    margin: 0 auto; /* Centra horizontalmente el carousel */
+  }
+  
+  .carousel-item img {
+    object-fit: contain; /* Ajusta el tamaño de las imágenes para que cubran completamente el carousel */
+    height: 400px; /* Ajusta la altura del carousel */
+  }
+  

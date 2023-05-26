@@ -1,17 +1,26 @@
 import React from 'react';
 import Carousel from "react-bootstrap/Carousel";
-
-const MyCarousel = ({images}) =>{
+import PropTypes from 'prop-types';
+import './carousel.css'
+const MyCarousel = ({ images }) =>{
+   
     return(
-        <Carousel>
-            {images.map((image)=>{
-                <Carousel>
-                    <img className='d-block w-100' src={image.poster_path} alt={image.title}/>
-                </Carousel>
-            })}
+        <Carousel interval={3000} className='my-carousel'>
+            {images.map((image, index)=>(
+                <Carousel.Item key={index}>
+                    <img 
+                        className='d-block w-100' 
+                        src={image} 
+                        alt={image.title}
+                    />
+                </Carousel.Item>
+            ))}
         </Carousel>
     )
 }
-   
+MyCarousel.propTypes = {
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  };
     
+ export default MyCarousel   
    
