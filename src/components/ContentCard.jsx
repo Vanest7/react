@@ -23,7 +23,6 @@ function ContentCard() {
       <MyCarousel images={carouselImages}></MyCarousel>
       <ul className="container">
         {movies.map((movie) => {
-          console.log(movie);
           return <MovieCard key={movie.id} movie={movie} />;
         })}
       </ul>
