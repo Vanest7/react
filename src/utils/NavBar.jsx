@@ -21,7 +21,7 @@ function NavBar() {
             <Link className="nav-link" to={"/tv"}>Series</Link>
             </li>
             <li className="nav-item">
-            <a className="nav-link" href="#">Books</a>
+            <Link className="nav-link" to={"/books"}>Books</Link>
             </li>
         </ul>
         <form className="d-flex" role="search">

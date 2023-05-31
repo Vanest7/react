@@ -3,8 +3,10 @@ import LandingPage from "../pages/LandingPage";
 import React from 'react';
 import MovieDetails from "../pages/MovieDetails";
 import SerieDetails from "../pages/SerieDetails";
+import BookDetails from "../pages/BookDetails";
 import MoviesPage from '../pages/MoviesPage';
-import SeriesPage from '../pages/SeriesPage'
+import SeriesPage from '../pages/SeriesPage';
+import BooksPage from '../pages/BooksPage';
 
 function MyRoutes() {
     return(
@@ -13,8 +15,10 @@ function MyRoutes() {
                 <Route exact path="/" element={<LandingPage/>}/>
                 <Route exact path="/movie/:movieId" element={<MovieDetails/>}/>
                 <Route exact path="/serie/:serieId" element={<SerieDetails/>}/>
+                <Route exact path="/book/:bookId" element={<BookDetails/>}/>
                 <Route exact path="/movies" element={<MoviesPage/>}/>
                 <Route exact path="/tv" element={<SeriesPage/>}/>
+                <Route exact path="/books" element={<BooksPage/>}/>
             </Routes>
         </Router>
     )

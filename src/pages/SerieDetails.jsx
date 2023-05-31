@@ -21,18 +21,24 @@ function SerieDetails() {
       <div className="details">
         <img className="imageDetails" src={imageURL} alt={show.title} />
         <div className="movieDetails">
+          {show && show.title?(
           <p className="title">
             <strong>Title: </strong>
             {show.title}
           </p>
+          ):null}
+          
           <p className="genre">
             <strong>Genre: </strong>
             {genre.name}
           </p>
+          {show && show.overview?(
           <p className="overview">
             <strong>Description: </strong>
             {show.overview}
           </p>
+          ):null}
+          
         </div>
       </div>
     </>
