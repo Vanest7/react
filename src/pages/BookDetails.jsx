@@ -26,19 +26,24 @@ function BookDetails() {
     <>
     <NavBar/>
       <div className="details">
-        <img className="imageDetails" src={imageURL} alt={book.volumeInfo?.title} />
+        <img className="imageDetails" width="400" src={imageURL} alt={book.volumeInfo?.title} />
         <div className="movieDetails">
           <p className="title">
             <strong>Title: </strong>
             {book.volumeInfo?.title}
           </p>
-          <p className="genre">
-            <strong>Subtitle: </strong>
-            {book.volumeInfo?.subtitle}
-          </p>
+          
+            {book && book.volumeInfo?.subtitle?(
+            <p className="genre">
+              <strong>Subtitle: </strong>
+              {book.volumeInfo?.subtitle}
+            </p>
+            ):null}
+            
+          
           <p className="overview">
-            <strong>Description: </strong>
-            {book.volumeInfo?.description}
+            <strong>Author: </strong>
+            {book.volumeInfo?.authors[0]}
           </p>
         </div>
       </div>
