@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import MyRoutes from "./routers/Routes";
 import Footer from './utils/Footer';
-
 function App() {
   return (
     <div>

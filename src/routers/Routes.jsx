@@ -7,6 +7,7 @@ import BookDetails from "../pages/BookDetails";
 import MoviesPage from '../pages/MoviesPage';
 import SeriesPage from '../pages/SeriesPage';
 import BooksPage from '../pages/BooksPage';
+import SearchResults from '../components/SearchResults'
 
 function MyRoutes() {
     return(
@@ -19,6 +20,7 @@ function MyRoutes() {
                 <Route exact path="/movies" element={<MoviesPage/>}/>
                 <Route exact path="/tv" element={<SeriesPage/>}/>
                 <Route exact path="/books" element={<BooksPage/>}/>
+                <Route exact path="/search" element={<SearchResults/>}/>
             </Routes>
         </Router>
     )

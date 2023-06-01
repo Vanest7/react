@@ -4,7 +4,7 @@ import './movieCard.css';
 import { Link } from "react-router-dom";
 function BookCard({book}){
     const imageURL = book.volumeInfo.imageLinks?.thumbnail;
-    console.log("el id"+book.id)
+    
     return (
     <div className="movies">
         <li className="movieCard">

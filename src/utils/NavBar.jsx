@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 function NavBar() {
+    const [searchTerm, setSearchTerm] = useState("");
+    
+
+    const handleSearch = (e) =>{
+        e.preventDefault();
+        window.location.href = (`/search?term=${encodeURIComponent(searchTerm)}`);
+       //clean searchterm after the search
+       setSearchTerm("");
+    };
+
     return(
 <div>
     <nav className="navbar bg-primary navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
@@ -24,8 +34,14 @@ function NavBar() {
             <Link className="nav-link" to={"/books"}>Books</Link>
             </li>
         </ul>
-        <form className="d-flex" role="search">
-            <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <form className="d-flex" onSubmit={handleSearch} role="search">
+            <input 
+            className="form-control me-2" 
+            type="search" 
+            placeholder="Search" 
+            aria-label="Search"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}/>
             <button className="btn btn-outline-success" type="submit">Search</button>
         </form>
         </div>
