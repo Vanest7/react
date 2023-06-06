@@ -4,13 +4,15 @@ import { get } from "../data/HttpClient";
 import NavBar from '../utils/NavBar';
 import './movieCard.css';
 import { Link } from "react-router-dom";
+import GetImg from "../utils/GetImg";
+
 
 function SearchResults() {
   const location = useLocation();
   const searchQuery = new URLSearchParams(location.search).get('term');
   const [googleBooksResults, setGoogleBooksResults] = useState([]);
   const [tmdbResults, setTmdbResults] = useState([]);
-  
+  const [showResults, setShowResults] = useState([]);
   useEffect(() => {
     const fetchGoogleBooksResults = async () => {
       try {
@@ -21,6 +23,7 @@ function SearchResults() {
         );
         const data = await response.json();
         setGoogleBooksResults(data.items || []);
+        
       } catch (error) {
         console.log(error);
       }
@@ -33,24 +36,66 @@ function SearchResults() {
           )}`
         
         );
-        console.log(response)
+        
         
         setTmdbResults(response.results || []);
       } catch (error) {
         console.log(error);
       }
     };
-
+    const fetchShowResults = async () => {
+        try {
+          const response = await get(`/search/tv?api_key=7007080e44315a18449abf4d28fbb935&query=${encodeURIComponent(
+              searchQuery
+            )}`
+          
+          );
+          
+          
+          setShowResults(response.results || []);
+        } catch (error) {
+          console.log(error);
+        }
+      };
     fetchGoogleBooksResults();
     fetchTmdbResults();
+    fetchShowResults();
   }, [searchQuery]);
-  console.log(setTmdbResults)
+  const imageURL = (posterPath) => GetImg(posterPath, 400);
+  console.log(tmdbResults)
   return (
     <>
     <NavBar></NavBar>
     <div className="container">
-        {googleBooksResults.length > 0 ? (
-          googleBooksResults.map((result) => (
+         {tmdbResults.map((result) => (
+            
+            <div key={result.id}>
+              <div key={result.id}>
+                 <Link to={"/movie/"+result.id}>
+                 <img className="imageMovie" width={230}
+                    height={345}
+                    src={imageURL(result.poster_path)}
+                    alt={result.title}/>
+                    </Link>
+              <p>Title: {result.title}</p>
+             </div>
+            </div>
+          ))}
+          {showResults.map((result) => (
+            
+            <div key={result.id}>
+              <div key={result.id}>
+            <Link to={"/tv/"+result.id}>
+                 <img className="imageMovie" width={230}
+                    height={345}
+                    src={imageURL(result.poster_path)}
+                    alt={result.title}/>
+                    </Link>
+              <p>Title: {result.title}</p>
+             </div>
+            </div>
+          ))}
+          {googleBooksResults.map((result) => (
               <div key={result.id} className="movies">
                  <Link to={"/book/"+result.id}>
                     <img className="imageMovie" width={230}
@@ -61,25 +106,10 @@ function SearchResults() {
                     <p>Title: {result.volumeInfo.title}</p>
                   
               </div>
-          ))
-        ) : tmdbResults.length > 0 ? (
-          tmdbResults.map((result) => (
-            
-            <div key={result.id}>
-              <div key={result.id}>
-                 <Link to={"/movie/"+result.id}></Link>
-                 <img className="imageMovie" width={230}
-                    height={345}
-                    src={`https://image.tmdb.org/t/p/w300${result.poster_path}`}
-                    alt={result.title}/>
-              <p>Title: {result.title}</p>
-             </div>
-            </div>
-          ))
-        ) : (
-          <p>Not found results.</p>
-        )}
-      </div>
+          ))}
+       
+         
+    </div>
 
     </>
   );
